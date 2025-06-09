@@ -1,9 +1,14 @@
 import "~/styles/globals.css";
 
-import { type Metadata } from "next";
+import Next, { type Metadata } from "next";
 import { Geist } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import  TopNav  from  "./_components/topnav"
+import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
+
+import "@uploadthing/react/styles.css";
+import { ourFileRouter } from "./api/uploadthing/core";
+import { extractRouterConfig } from "uploadthing/server";
 
 export const metadata: Metadata = {
   title: "Chirp Gallery",
@@ -23,8 +28,12 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <ClerkProvider>
+    <ClerkProvider dynamic >
     <html lang="en" className={`${geist.variable}`}>
+    <NextSSRPlugin
+          
+            routerConfig={extractRouterConfig(ourFileRouter)}
+          />
       <body> <TopNav/>{children}</body>
     </html>
     </ClerkProvider>

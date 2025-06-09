@@ -8,8 +8,8 @@ export default clerkMiddleware((auth,request) => {if (isProtectedRoute(request))
 export const config = {
   matcher: [
     // Skip Next.js internals and all static files, unless found in search params
-    '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
+    "/((?!.+\\.[\\w]+$|_next).*)",
     // Always run for API routes
-   '/', '/(api|trpc)(.*)',
+   "/", "/(api|trpc)(.*)",
   ],
 }
