@@ -28,7 +28,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <ClerkProvider dynamic >
+    <ClerkProvider  >
     <html lang="en" className={`${geist.variable}`}>
     <NextSSRPlugin
           
